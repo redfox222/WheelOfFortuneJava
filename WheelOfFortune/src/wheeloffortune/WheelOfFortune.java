@@ -21,6 +21,7 @@ public class WheelOfFortune {
         System.out.println("To exit enter E.");
         String startMain = scMain.nextLine();
         
+        
     }
     
 }
