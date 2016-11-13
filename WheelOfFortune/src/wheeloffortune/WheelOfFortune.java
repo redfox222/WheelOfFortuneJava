@@ -20,9 +20,8 @@ public class WheelOfFortune {
         
         //Start Standard, Chirstmas Version or Exit.  
         System.out.println("Do you want to start a game of wheel of fortune?");
-        System.out.println("To play a standard game enter S. to play a chirstmas version press C.");
-        System.out.println("To exit enter E.");
-        String startMain = scMain.nextLine();
+        System.out.println("Please enter 1 for standard: 2 for holiday: 3 to exit.");
+        int startMain = scMain.nextInt();
         
         //Amount of Players and puzzles
         System.out.print("Number Of players(1-4): ");
