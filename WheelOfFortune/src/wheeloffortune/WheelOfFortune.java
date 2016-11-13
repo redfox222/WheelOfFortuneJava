@@ -1,6 +1,8 @@
 
 package wheeloffortune;
 
+import java.util.Scanner;
+
 /**
  *
  * @authors Randy Gillette, Gail Morrison, Stephen Dembrak, Mackenzie Davis, Jared Ward
@@ -12,6 +14,12 @@ public class WheelOfFortune {
 
  
     public static void main(String[] args) {
+        Scanner scMain = new Scanner(System.in);
+        
+        System.out.println("Do you want to start a game of wheel of fortune?");
+        System.out.println("To play a standard game enter S. to play a chirstmas version press C.");
+        System.out.println("To exit enter E.");
+        String startMain = scMain.nextLine();
         
     }
     
