@@ -8,11 +8,6 @@ package wheeloffortune;
  * @Project Wheel of fortune
  */
 
-public class WheelOfFortune {
-
- 
-    public static void main(String[] args) {
-        
-    }
+public class Game {
     
 }
