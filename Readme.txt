@@ -1,12 +1,12 @@
 
-*******************************************      Git Information      **********************************************************
+*******************************************      Git Information      ****************************************************
 you can click the clone or download button on the right and click open in desktop to add the file to your desktop.
 
 When you use git you have to commit your changes when you are finished making changes.
 
 click the changes tab at the top of git then add a description to the change and click commit changes at the bottom.
 
-*******************************************     Project Requirements      **********************************************************
+*******************************************     Project Requirements      *************************************************
 Wheel of Fortune
 
 *Participating teams must create a WOF game to meet the following parameters: *
