@@ -8,6 +8,7 @@ package wheeloffortune;
  * @Project Wheel of fortune
  */
 
-public class Game {
+public class Game 
+{
     
 }
