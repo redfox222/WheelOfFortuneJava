@@ -1,4 +1,3 @@
-
 package wheeloffortune;
 
 import java.util.Scanner;
