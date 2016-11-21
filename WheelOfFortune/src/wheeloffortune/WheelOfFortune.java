@@ -1,7 +1,7 @@
 package wheeloffortune;
 
 import java.util.Scanner;
-
+import java.util.Random;
 /**
  * 
  * @authors Randy Gillette, Gail Morrison, Stephen Dembrak, Mackenzie Davis, Jared Ward
@@ -13,11 +13,12 @@ public class WheelOfFortune
 {
 
  
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         //Variables
         Scanner scMain = new Scanner(System.in);
-        
-        
+        Random numgenerator = new Random();//to be used for the spins
+        int spinInt = numgenerator.nextInt(12);//need to add 1 because random end is exclusive
         
         
         //Start Standard, Chirstmas Version or Exit.  
@@ -107,6 +108,7 @@ public class WheelOfFortune
                     break;
                 case "e": System.out.println("Goodbye!");//need to close program when e is chosen
                           fk++;
+                          System.exit(0);//Exits the program
                     break;
                 default: System.out.println("Not a valid choice");
                     break;
@@ -169,17 +171,17 @@ public class WheelOfFortune
         {
             switch (u)
             {
-                case 0: System.out.println("Player " + (u+1) + "'s Balance:");
+                case 0: System.out.println("Player " + (u+1) + "'s Balance:" + p1.getRBal());
                     break;
-                case 1: System.out.println("Player " + (u+1) + "'s Balance:");
+                case 1: System.out.println("Player " + (u+1) + "'s Balance:" + p2.getRBal());
                     break;
-                case 2: System.out.println("Player " + (u+1) + "'s Balance:");
+                case 2: System.out.println("Player " + (u+1) + "'s Balance:" + p3.getRBal());
                     break;
-                case 3: System.out.println("Player " + (u+1) + "'s Balance:");
+                case 3: System.out.println("Player " + (u+1) + "'s Balance:" + p4.getRBal());
                     break;
             }
         }
-         //Testing code
+        //Testing code
         //System.out.println(p1.getName() + p2.getName() + p3.getName() + p4.getName());
         
         

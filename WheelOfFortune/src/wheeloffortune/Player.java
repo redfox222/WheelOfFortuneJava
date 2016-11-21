@@ -1,5 +1,5 @@
 package wheeloffortune;
-
+import java.util.Random;
 /**
  *
  * @authors Randy Gillette, Gail Morrison, Stephen Dembrak, Mackenzie Davis, Jared Ward
@@ -12,6 +12,7 @@ public class Player
     private String playerName;
     private int totalBalance;
     private int roundBalance;
+    private boolean isTurn;
     
     public Player(){}
     
@@ -36,9 +37,17 @@ public class Player
     {
         return roundBalance;
     }
-    public void Bankrupt()//can be used to start a new round or bankrupt a person
+    public void bankrupt()//can be used to start a new round or bankrupt a person
     {
         roundBalance = 0;
+    }
+    public void myTurn(boolean t)//either is true or false, whether it is the player's turn or not
+    {
+        isTurn = t;
+    }
+    public boolean getTurn()
+    {
+        return isTurn;
     }
     /*
     public int newRound()
