@@ -1,5 +1,5 @@
-
 package wheeloffortune;
+import java.util.Random;
 
 /**
  *
@@ -8,6 +8,7 @@ package wheeloffortune;
  * @Project Wheel of fortune
  */
 
-public class Game {
+public class Game 
+{
     
 }
