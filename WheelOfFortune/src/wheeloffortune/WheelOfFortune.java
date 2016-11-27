@@ -12,8 +12,8 @@ import java.util.Random;
 public class WheelOfFortune 
 {
 
-    private int spinInt;//need to add 1 because random end is exclusive
-    private final int[] spinCash = {550, 550, 550, 600, 600, 600, 700, 700, 900, 900, 0, 0};
+    private static int spinInt;//need to add 1 because random end is exclusive
+    private static final int[] spinCash = {550, 550, 550, 600, 600, 600, 700, 700, 900, 900, 0, 1};
     //to be used for the spins
     public static void main(String[] args) 
     {
@@ -30,6 +30,8 @@ public class WheelOfFortune
         String [] on_the_map = new String [5];
         String [] what_are_you_doing = new String [5];
         //Start Standard, Chirstmas Version or Exit.  
+        //for(int ask = 0; ask <= 50; ask++)
+        //        System.out.println(spin());
         System.out.println("Welcome to Wheel of Fortune!");
         
         int fk = 0;
@@ -192,7 +194,7 @@ public class WheelOfFortune
         
         
     }
-    int spin()
+    static int spin()
     {
         Random spinGenerator = new Random();
         
