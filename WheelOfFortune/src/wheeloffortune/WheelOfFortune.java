@@ -223,5 +223,89 @@ public class WheelOfFortune
         spinInt = spinGenerator.nextInt(12);
         return spinCash[spinInt];
     }
-    
+    public static char[] phraseToArray(String newPhrase)
+        {
+            char[] array = new char [newPhrase.length()];
+            for (int index = 0; index < newPhrase.length(); index++)
+            {
+                array[index] = newPhrase.charAt(index);
+            }
+            return array;
+            
+        }
+        public static char[] phraseArrayToBlank (char[] phraseArray)
+        {
+            char[] hiddenArray = new char [phraseArray.length];
+            for (int index = 0; index < phraseArray.length; index++)
+            {
+                if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(Character.toUpperCase(phraseArray[index])) >= 0)  
+                    hiddenArray[index] = '*';
+                
+                else 
+                    hiddenArray[index] = phraseArray[index];
+                    }
+            return hiddenArray;
+        }
+        
+        public static String letterRemove (String letterStr, char letter)
+        {
+            String letterStrRemove = "";
+            int findIndex = letterStr.indexOf (Character.toUpperCase(letter));
+            
+            letterStrRemove = letterStr.substring(0,findIndex) + letterStr.substring(findIndex+1);
+            
+            return letterStrRemove;
+        }
+        
+        public static boolean isGuessCorrect (char[] phraseArray, char guess)
+        {
+            boolean correct = false;
+            for (int index = 0; index < phraseArray.length; index++)
+            {
+                //if the guess is found in the char array
+                if (phraseArray[index] == (Character.toUpperCase(guess)))
+                {
+                    correct = true;
+                    break;
+                }
+                else
+                    correct = false;
+            }
+            if (correct == true)
+                return true;
+            else
+                return false;
+        }
+
+
+        public static char[] revealLetter (char[] phraseArray, char[] phraseArrayHidden,char guess)
+                {
+                    for (int index = 0; index < phraseArray.length; index++)
+                    {
+                        if (phraseArray[index] == Character.toUpperCase(guess))
+                            phraseArrayHidden[index] = phraseArray[index];
+                    }
+                    return phraseArrayHidden;
+                }
+                
+        public static boolean isPhraseSolved (char[] phraseArray, char[] phraseArrayHidden)
+        {
+            boolean playerWin = false;
+            for (int index = 0; index <phraseArrayHidden.length; index++)
+            {
+                if (Character.toUpperCase(phraseArrayHidden[index]) == (phraseArray[index]))
+                        
+                    playerWin = true;
+                
+                else 
+                {
+                    playerWin = false;
+                    break;
+                }
+            }
+            if (playerWin == true)
+                return true;
+            else            
+                return false;
+        }
 }
