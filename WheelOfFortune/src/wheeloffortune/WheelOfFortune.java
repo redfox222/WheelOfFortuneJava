@@ -19,15 +19,17 @@ public class WheelOfFortune
         Scanner scMain = new Scanner(System.in);
         Random numgenerator = new Random();//to be used for the spins
         int spinInt = numgenerator.nextInt(12);//need to add 1 because random end is exclusive
+        int[] spinCash = {550, 550, 550, 600, 600, 600, 700, 700, 900, 900, 0, 0};
+        int puzCat = numgenerator.nextInt(25);
         
         
+        String [] before_and_after = new String [5];
+        String [] events = new String [5];
+        String [] movie_title = new String [5];
+        String [] on_the_map = new String [5];
+        String [] what_are_you_doing = new String [5];
         //Start Standard, Chirstmas Version or Exit.  
-        System.out.println("Do you want to start a game of wheel of fortune?");
-<<<<<<< HEAD
-        System.out.println("Please enter 1 for standard: 2 for holiday: 3 to exit.");
-        int startMain = scMain.nextInt();
-=======
->>>>>>> origin/master
+        System.out.println("Welcome to Wheel of Fortune!");
         
         int fk = 0;
         while(fk == 0)
@@ -37,11 +39,7 @@ public class WheelOfFortune
             String startMain = scMain.nextLine();
             switch (startMain)
             {
-                case "s": String [] before_and_after = new String [5];
-                        String [] events = new String [5];
-                        String [] movie_title = new String [5];
-                        String [] on_the_map = new String [5];
-                        String [] what_are_you_doing = new String [5];
+                case "s": 
         
                         before_and_after [0] = "A Blast From The Past Present And Future";
                         before_and_after [1] = "A Chip Off Of The Old Block Party";
@@ -74,41 +72,37 @@ public class WheelOfFortune
                         what_are_you_doing [4] = "Finishing The Group Project";
                         fk++;
                     break;
-                case "c": String [] holiday_before_and_after = new String [5];
-                        String [] holiday_events = new String [5];
-                        String [] holiday_movie_title = new String [5];
-                        String [] holiday_on_the_map = new String [5];
-                        String [] holiday_what_are_you_doing = new String [5];
+                case "c": 
         
-                        holiday_before_and_after [0] = "Candy Cane Sugar";
-                        holiday_before_and_after [1] = "Christmas Carol Burnett";
-                        holiday_before_and_after [2] = "Regifting A Gift Tag";
-                        holiday_before_and_after [3] = "Wishing You A Merry Christmas Carol";
-                        holiday_before_and_after [4] = "Merry Christmas Lights";
+                        before_and_after [0] = "Candy Cane Sugar";
+                        before_and_after [1] = "Christmas Carol Burnett";
+                        before_and_after [2] = "Regifting A Gift Tag";
+                        before_and_after [3] = "Wishing You A Merry Christmas Carol";
+                        before_and_after [4] = "Merry Christmas Lights";
         
-                        holiday_events [0] = "Christmas Parade";
-                        holiday_events [1] = "Church Service";
-                        holiday_events [2] = "The Nutcracker Play";
-                        holiday_events [3] = "Christmas Dinner";
-                        holiday_events [4] = "Christmas Shopping";
+                        events [0] = "Christmas Parade";
+                        events [1] = "Church Service";
+                        events [2] = "The Nutcracker Play";
+                        events [3] = "Christmas Dinner";
+                        events [4] = "Christmas Shopping";
         
-                        holiday_movie_title [0] = "Prep And Landing";
-                        holiday_movie_title [1] = "Miracle on 34th Street";
-                        holiday_movie_title [2] = "How The Grinch Stole Christmas";
-                        holiday_movie_title [3] = "A Christmas Carol";
-                        holiday_movie_title [4] = "A Christmas Story";
+                        movie_title [0] = "Prep And Landing";
+                        movie_title [1] = "Miracle on 34th Street";
+                        movie_title [2] = "How The Grinch Stole Christmas";
+                        movie_title [3] = "A Christmas Carol";
+                        movie_title [4] = "A Christmas Story";
         
-                        holiday_on_the_map [0] = "The North Pole";
-                        holiday_on_the_map [1] = "Rockefeller Center New York";
-                        holiday_on_the_map [2] = "Santa Claus Georgia";
-                        holiday_on_the_map [3] = "Christmasville Tennessee";
-                        holiday_on_the_map [4] = "Mistletoe Kentucky";
+                        on_the_map [0] = "The North Pole";
+                        on_the_map [1] = "Rockefeller Center New York";
+                        on_the_map [2] = "Santa Claus Georgia";
+                        on_the_map [3] = "Christmasville Tennessee";
+                        on_the_map [4] = "Mistletoe Kentucky";
         
-                        holiday_what_are_you_doing [0] = "Trimming The Tree";
-                        holiday_what_are_you_doing [1] = "Wrapping The Presents";
-                        holiday_what_are_you_doing [2] = "Attending Church Service";
-                        holiday_what_are_you_doing [3] = "Spending Time With Family";
-                        holiday_what_are_you_doing [4] = "Hanging Mistletoe";
+                        what_are_you_doing [0] = "Trimming The Tree";
+                        what_are_you_doing [1] = "Wrapping The Presents";
+                        what_are_you_doing [2] = "Attending Church Service";
+                        what_are_you_doing [3] = "Spending Time With Family";
+                        what_are_you_doing [4] = "Hanging Mistletoe";
                         fk++;
                     break;
                 case "e": System.out.println("Goodbye!");//need to close program when e is chosen
@@ -186,6 +180,10 @@ public class WheelOfFortune
                     break;
             }
         }
+        
+        
+        
+        
         //Testing code
         //System.out.println(p1.getName() + p2.getName() + p3.getName() + p4.getName());
         

@@ -12,7 +12,7 @@ public class Player
     private String playerName;
     private int totalBalance;
     private int roundBalance;
-    private boolean isTurn;
+    private boolean myTurn;
     
     public Player(){}
     
@@ -41,13 +41,13 @@ public class Player
     {
         roundBalance = 0;
     }
-    public void myTurn(boolean t)//either is true or false, whether it is the player's turn or not
+    public void isTurn(boolean t)//either is true or false, whether it is the player's turn or not
     {
-        isTurn = t;
+        myTurn = t;
     }
     public boolean getTurn()
     {
-        return isTurn;
+        return myTurn;
     }
     /*
     public int newRound()
