@@ -14,6 +14,11 @@ public class WheelOfFortune
 
     private static int spinInt;//need to add 1 because random end is exclusive
     private static final int[] spinCash = {550, 550, 550, 600, 600, 600, 700, 700, 900, 900, 0, 1};
+    static int u = 0;
+    static Player p1 = new Player();
+    static Player p2 = new Player();
+    static Player p3 = new Player();
+    static Player p4 = new Player();
     //to be used for the spins
     public static void main(String[] args) 
     {
@@ -21,7 +26,7 @@ public class WheelOfFortune
         Scanner scMain = new Scanner(System.in);
         
         Random mainGenerator = new Random();
-        int puzCat = mainGenerator.nextInt(25);
+        int puzCat = 0;
         
         
         String [] before_and_after = new String [5];
@@ -118,14 +123,104 @@ public class WheelOfFortune
         }
                 
         //Amount of Players and puzzles
+        /*
         Player p1 = new Player();
         Player p2 = new Player();
         Player p3 = new Player();
         Player p4 = new Player();
+        */
+        
         System.out.print("Number Of players(1-4): ");
         int playerAmount = scMain.nextInt();
         System.out.print("Number Of puzzles(1-25): ");
         int puzzleAmount = scMain.nextInt();
+        for(int ran = 0; ran <= puzzleAmount; ran++)
+        {
+        
+        char[] puzzle;
+        char[] hidden;
+        
+        puzCat = mainGenerator.nextInt(25);
+        switch(puzCat)
+        {
+            case 0: puzzle = phraseToArray(before_and_after[0]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 1: puzzle = phraseToArray(before_and_after[1]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 2: puzzle = phraseToArray(before_and_after[2]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 3: puzzle = phraseToArray(before_and_after[3]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 4: puzzle = phraseToArray(before_and_after[4]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 5: puzzle = phraseToArray(events[0]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 6: puzzle = phraseToArray(events[1]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 7: puzzle = phraseToArray(events[2]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 8: puzzle = phraseToArray(events[3]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 9: puzzle = phraseToArray(events[4]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 10: puzzle = phraseToArray(movie_title[0]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 11: puzzle = phraseToArray(movie_title[1]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 12: puzzle = phraseToArray(movie_title[2]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 13: puzzle = phraseToArray(movie_title[3]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 14: puzzle = phraseToArray(movie_title[4]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 15: puzzle = phraseToArray(on_the_map[0]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 16: puzzle = phraseToArray(on_the_map[1]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 17: puzzle = phraseToArray(on_the_map[2]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 18: puzzle = phraseToArray(on_the_map[3]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 19: puzzle = phraseToArray(on_the_map[4]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 20: puzzle = phraseToArray(what_are_you_doing[0]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 21: puzzle = phraseToArray(what_are_you_doing[1]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 22: puzzle = phraseToArray(what_are_you_doing[2]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 23: puzzle = phraseToArray(what_are_you_doing[3]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+            case 24: puzzle = phraseToArray(what_are_you_doing[4]);
+                    hidden = phraseArrayToBlank(puzzle);
+                break;
+        }
+        //hidden = phraseArrayToBlank(puzzle);
+        
         /*
         switch (playerAmount)
         {
@@ -167,7 +262,7 @@ public class WheelOfFortune
                     break;
             }
         }
-        int u = 0;
+        
         
         //display Each Player's Balance
         while(u < playerAmount)
@@ -214,15 +309,45 @@ public class WheelOfFortune
         
         
         
-        
+        }
     }
+    
     static int spin()
     {
         Random spinGenerator = new Random();
         
         spinInt = spinGenerator.nextInt(12);
-        return spinCash[spinInt];
+        if(spinInt <= 9)
+        {
+           return spinCash[spinInt]; 
+        }
+        else if(spinInt == 10)
+        {
+            u++;
+        }
+        else if(spinInt == 11)
+        {
+            u++;
+            if (p1.getTurn())
+            {
+                
+            }
+            else if (p2.getTurn())
+            {
+                
+            }
+            else if (p3.getTurn())
+            {
+                
+            }
+            else if (p4.getTurn())
+            {
+                
+            }
+        }
+        return u;
     }
+    
     public static char[] phraseToArray(String newPhrase)
         {
             char[] array = new char [newPhrase.length()];
@@ -247,7 +372,7 @@ public class WheelOfFortune
             return hiddenArray;
         }
         
-        public static String letterRemove (String letterStr, char letter)
+    public static String letterRemove (String letterStr, char letter)
         {
             String letterStrRemove = "";
             int findIndex = letterStr.indexOf (Character.toUpperCase(letter));
@@ -257,7 +382,7 @@ public class WheelOfFortune
             return letterStrRemove;
         }
         
-        public static boolean isGuessCorrect (char[] phraseArray, char guess)
+    public static boolean isGuessCorrect (char[] phraseArray, char guess)
         {
             boolean correct = false;
             for (int index = 0; index < phraseArray.length; index++)
@@ -278,7 +403,7 @@ public class WheelOfFortune
         }
 
 
-        public static char[] revealLetter (char[] phraseArray, char[] phraseArrayHidden,char guess)
+    public static char[] revealLetter (char[] phraseArray, char[] phraseArrayHidden,char guess)
                 {
                     for (int index = 0; index < phraseArray.length; index++)
                     {
@@ -288,7 +413,7 @@ public class WheelOfFortune
                     return phraseArrayHidden;
                 }
                 
-        public static boolean isPhraseSolved (char[] phraseArray, char[] phraseArrayHidden)
+    public static boolean isPhraseSolved (char[] phraseArray, char[] phraseArrayHidden)
         {
             boolean playerWin = false;
             for (int index = 0; index <phraseArrayHidden.length; index++)
