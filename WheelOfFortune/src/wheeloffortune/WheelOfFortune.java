@@ -12,15 +12,16 @@ import java.util.Random;
 public class WheelOfFortune 
 {
 
- 
+    private int spinInt;//need to add 1 because random end is exclusive
+    private final int[] spinCash = {550, 550, 550, 600, 600, 600, 700, 700, 900, 900, 0, 0};
+    //to be used for the spins
     public static void main(String[] args) 
     {
         //Variables
         Scanner scMain = new Scanner(System.in);
-        Random numgenerator = new Random();//to be used for the spins
-        int spinInt = numgenerator.nextInt(12);//need to add 1 because random end is exclusive
-        int[] spinCash = {550, 550, 550, 600, 600, 600, 700, 700, 900, 900, 0, 0};
-        int puzCat = numgenerator.nextInt(25);
+        
+        Random mainGenerator = new Random();
+        int puzCat = mainGenerator.nextInt(25);
         
         
         String [] before_and_after = new String [5];
@@ -190,6 +191,13 @@ public class WheelOfFortune
         
         
         
+    }
+    int spin()
+    {
+        Random spinGenerator = new Random();
+        
+        spinInt = spinGenerator.nextInt(12);
+        return spinCash[spinInt];
     }
     
 }
