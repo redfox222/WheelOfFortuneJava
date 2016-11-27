@@ -167,21 +167,43 @@ public class WheelOfFortune
                     break;
             }
         }
+        int u = 0;
         
         //display Each Player's Balance
-        for(int u = 0; u < playerAmount; u++)
+        while(u < playerAmount)
         {
             switch (u)
             {
                 case 0: System.out.println("Player " + (u+1) + "'s Balance:" + p1.getRBal());
+                    System.out.println("Its player 1's turn");
+                    p1.isTurn(true);
+                    p2.isTurn(false);
+                    p3.isTurn(false);
+                    p4.isTurn(false);
                     break;
                 case 1: System.out.println("Player " + (u+1) + "'s Balance:" + p2.getRBal());
+                System.out.println("Its player 2's turn");
+                    p1.isTurn(false);
+                    p2.isTurn(true);
+                    p3.isTurn(false);
+                    p4.isTurn(false);
                     break;
                 case 2: System.out.println("Player " + (u+1) + "'s Balance:" + p3.getRBal());
+                System.out.println("Its player 3's turn");
+                    p1.isTurn(false);
+                    p2.isTurn(false);
+                    p3.isTurn(true);
+                    p4.isTurn(false);
                     break;
                 case 3: System.out.println("Player " + (u+1) + "'s Balance:" + p4.getRBal());
+                    System.out.println("Its player 4's turn");
+                    p1.isTurn(false);
+                    p2.isTurn(false);
+                    p3.isTurn(false);
+                    p4.isTurn(true);
                     break;
             }
+        
         }
         
         
