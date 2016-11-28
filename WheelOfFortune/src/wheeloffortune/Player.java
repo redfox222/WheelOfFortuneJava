@@ -1,5 +1,5 @@
 package wheeloffortune;
-import java.util.Random;
+
 /**
  *
  * @authors Randy Gillette, Gail Morrison, Stephen Dembrak, Mackenzie Davis, Jared Ward
@@ -24,7 +24,7 @@ public class Player
     {
         return playerName;
     }
-    public void defaultBal()//sets the total balance to zero
+    public void newGame()//sets the total balance to zero
     {
         totalBalance = 0;
         roundBalance = 0;

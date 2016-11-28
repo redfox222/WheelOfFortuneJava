@@ -2,6 +2,7 @@ package wheeloffortune;
 
 import java.util.Scanner;
 import java.util.Random;
+import java.util.ArrayList;
 /**
  * 
  * @authors Randy Gillette, Gail Morrison, Stephen Dembrak, Mackenzie Davis, Jared Ward
@@ -15,17 +16,22 @@ public class WheelOfFortune
     private static int spinInt;//need to add 1 because random end is exclusive
     private static final int[] spinCash = {550, 550, 550, 600, 600, 600, 700, 700, 900, 900, 0, 1};
     static int u = 0;
+    
     static Player p1 = new Player();
     static Player p2 = new Player();
     static Player p3 = new Player();
     static Player p4 = new Player();
+    static ArrayList<Player> players = new ArrayList<Player>();
+    
+    static Random randNum = new Random();
+    static Scanner scMain = new Scanner(System.in);
     //to be used for the spins
     public static void main(String[] args) 
     {
         //Variables
-        Scanner scMain = new Scanner(System.in);
         
-        Random mainGenerator = new Random();
+        
+        
         int puzCat = 0;
         
         
@@ -140,7 +146,7 @@ public class WheelOfFortune
         char[] puzzle;
         char[] hidden;
         
-        puzCat = mainGenerator.nextInt(25);
+        puzCat = randNum.nextInt(25);
         switch(puzCat)
         {
             case 0: puzzle = phraseToArray(before_and_after[0]);
@@ -241,24 +247,28 @@ public class WheelOfFortune
             switch (k)
             {
                 case 0: System.out.println("Enter Player " + (k+1) + "'s name:");
+                        players.add(p1);
                         playName = scMain.next();
                         p1.setName(playName);
-                        p1.defaultBal();
+                        p1.newGame();
                     break;
                 case 1: System.out.println("Enter Player " + (k+1) + "'s name:");
                         playName = scMain.next();
+                        players.add(p2);
                         p2.setName(playName);
-                        p2.defaultBal();
+                        p2.newGame();
                     break;
                 case 2: System.out.println("Enter Player " + (k+1) + "'s name:");
                         playName = scMain.next();
+                        players.add(p3);
                         p3.setName(playName);
-                        p3.defaultBal();
+                        p3.newGame();
                     break;
                 case 3: System.out.println("Enter Player " + (k+1) + "'s name:");
                         playName = scMain.next();
+                        players.add(p4);
                         p4.setName(playName);
-                        p4.defaultBal();
+                        p4.newGame();
                     break;
             }
         }
@@ -314,23 +324,26 @@ public class WheelOfFortune
     
     static int spin()
     {
-        Random spinGenerator = new Random();
+        //Random spinGenerator = new Random();  Has no use
         
-        spinInt = spinGenerator.nextInt(12);
+        spinInt = randNum.nextInt(12);
         if(spinInt <= 9)
         {
            return spinCash[spinInt]; 
         }
         else if(spinInt == 10)
         {
-            u++;
+            
+            
+            players.get(u).isTurn(false);
+            u++;//ends turn
         }
         else if(spinInt == 11)
         {
-            u++;
+            
             if (p1.getTurn())
             {
-                
+                players.get(u).bankrupt();
             }
             else if (p2.getTurn())
             {
@@ -358,7 +371,7 @@ public class WheelOfFortune
             return array;
             
         }
-        public static char[] phraseArrayToBlank (char[] phraseArray)
+    public static char[] phraseArrayToBlank (char[] phraseArray)
         {
             char[] hiddenArray = new char [phraseArray.length];
             for (int index = 0; index < phraseArray.length; index++)
