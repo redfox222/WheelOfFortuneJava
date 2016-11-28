@@ -33,7 +33,7 @@ public class Player
     {
        roundBalance += rb;
     }
-    public void addTBal()
+    public void addTBal(int tb)
     {
         totalBalance += roundBalance;
     }
