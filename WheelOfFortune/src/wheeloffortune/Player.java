@@ -33,6 +33,10 @@ public class Player
     {
        roundBalance += rb;
     }
+    public void addTBal()
+    {
+        totalBalance += roundBalance;
+    }
     public int getTBal()
     {
         return totalBalance;

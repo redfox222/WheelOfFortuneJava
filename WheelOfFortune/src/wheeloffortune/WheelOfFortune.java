@@ -33,6 +33,7 @@ public class WheelOfFortune
     static int playerAmount;
     static Random randNum = new Random();
     static Scanner scMain = new Scanner(System.in);
+    static Scanner scMain1 = new Scanner(System.in).useDelimiter("\n");
     //to be used for the spins
     public static void main(String[] args) 
     {
@@ -148,7 +149,7 @@ public class WheelOfFortune
         */
         
         System.out.print("Number Of players(1-4): ");
-        int playerAmount = scMain.nextInt();
+        playerAmount = scMain.nextInt();
         System.out.print("Number Of puzzles(1-25): ");
         int puzzleAmount = scMain.nextInt();
         for(int ran = 0; ran <= puzzleAmount; ran++)
@@ -308,14 +309,14 @@ public class WheelOfFortune
                     break;
             }
         }
-        spinInt = randNum.nextInt(12);
+        
         p1.isTurn(true);
         //display Each Player's Balance
         while(u < playerAmount)
         {
             if(players.get(u).getTurn())
             {
-                System.out.println(players.get(u).getName() + "'s Balance:" + p1.getRBal());
+                System.out.println(players.get(u).getName() + "'s Balance:" + players.get(u).getRBal());
                 System.out.println("Its player "+(u+1)+"'s turn");
                 System.out.println(genre);
                 System.out.println(Arrays.toString(hidden));
@@ -339,100 +340,108 @@ public class WheelOfFortune
     {
         //Random spinGenerator = new Random();  Has no use
         int fin = 0;
+        spinInt = randNum.nextInt(12);
         if(spinInt <= 9)
         {
            fin = spinCash[spinInt]; 
         }
         else if(spinInt == 10)
         {
-            players.get(u).isTurn(false);
-            u++;//ends turn
-            if (u >= 4)
-            {
-                players.get(0).isTurn(true);
-                u = 0;
-            }
-            else
-            {
-                players.get(u).isTurn(true);
-            }
-            
             fin = 0;
         }
         else if(spinInt == 11)
         {
-            players.get(u).bankrupt();
-            players.get(u).isTurn(false);
-            u++;
-            if (u >= 4)
-            {
-                players.get(0).isTurn(true);
-                u = 0;
-            }
-            else
-            {
-                players.get(u).isTurn(true);
-            }
             fin = 0;
         }
         return fin;
     }
     public static void takeTurn()
     {
-                    
-                    
                     System.out.println("Would you like to Spin (S) or Solve the Puzzle (P)?");
                     choice = scMain.next();
+                    System.out.println(choice);
                     int rbal;
                     switch (choice)
                     {
                         case "s":rob = spin();
                                  
-                                 if (rob == 0 && spinInt == 10)
+                                 if (spinCash[spinInt] == 0)
                                  {
                                      System.out.println("You lose a turn!");
+                                     u++;
+                                     if (u >= playerAmount)
+                                        {
+                                            u = 0;
+                                            players.get(u).isTurn(true);
+                                            
+                                        }
+                                        
+                                        else
+                                        {
+                                            players.get(u).isTurn(true);
+                                        }
                                  }
-                                 else if (rob == 0 && spinInt == 11)
+                                 else if (spinCash[spinInt] == 1)
                                  {
                                      System.out.println("Bankrupt!");
+                                     u++;
+                                     if (u >= playerAmount)
+                                        {
+                                            u = 0;
+                                            players.get(u).isTurn(true);
+                                            
+                                        }
+                                        
+                                        else
+                                        {
+                                            players.get(u).isTurn(true);
+                                        }
                                  }
                                  else
                                  {
-                                    System.out.println("What letter will you guess?");
+                                     System.out.println("You Spun: " + spinCash[spinInt]);
+                                     System.out.println("What letter will you guess?");
                                     strGuess = scMain.next();
+                                    System.out.println(strGuess);
                                     chGuess = strGuess.charAt(0);
-                                    if(isGuessCorrect(puzzle, chGuess))
-                                    {
-                                        hidden = revealLetter(puzzle ,hidden, chGuess);
-                                        rbal = rob * Arrays.toString(puzzle).indexOf(chGuess);
-                                        players.get(u).addrBal(rbal);
-                                        
-                                    }
-                                    else
+                                    if(!isGuessCorrect(puzzle, chGuess))
                                     {
                                         System.out.println("Wrong choice, End of turn");
                                         players.get(u).isTurn(false);
                                         u++;//ends turn
+                                        //System.out.println(u);
+                                        //System.out.println(playerAmount);
                                         if (u >= playerAmount)
                                         {
                                             u = 0;
                                             players.get(u).isTurn(true);
                                             
                                         }
+                                        
                                         else
                                         {
                                             players.get(u).isTurn(true);
                                         }
+                                        //System.out.println(u);
+                                       // System.out.println(playerAmount);
                                         break;
+                                    }
+                                    else
+                                    {
+                                        hidden = revealLetter(puzzle ,hidden, chGuess);
+                                        rbal = rob * spinMulti();
+                                        players.get(u).addrBal(rbal);
+                                        
                                     }
                                  }
                                  break;
                         case "p":System.out.println("what is your guess?");
-                                 strGuess = scMain.next();
-                                 finalGuess = phraseToArray(strGuess);
+                                 strGuess = scMain1.next();
+                                 finalGuess = strGuess.toCharArray();
                                  if (isPhraseSolved(finalGuess, puzzle))
                                  {
                                      System.out.println("Correct!");
+                                     System.out.println("");
                                  }
                                  else
                                  {
@@ -454,6 +463,23 @@ public class WheelOfFortune
                                  System.out.println("Not an option");
                                  break;
                     }
+    }
+    
+    public static int spinMulti()
+    {
+        int i = 0;
+        String s = Arrays.toString((puzzle));
+        String ms;
+        
+        for(int m = 0; m < s.length(); m++)
+        {
+            if(Character.toUpperCase(s.charAt(m)) == Character.toUpperCase(chGuess))
+            {
+                i++;
+            }
+        }
+        
+        return i;
     }
     
     public static char[] phraseToArray(String newPhrase)
@@ -496,7 +522,7 @@ public class WheelOfFortune
             for (int index = 0; index < phraseArray.length; index++)
             {
                 //if the guess is found in the char array
-                if (phraseArray[index] == (Character.toUpperCase(guess)))
+                if (Character.toUpperCase(phraseArray[index]) == (Character.toUpperCase(guess)))
                 {
                     correct = true;
                     break;
@@ -515,7 +541,7 @@ public class WheelOfFortune
                 {
                     for (int index = 0; index < phraseArray.length; index++)
                     {
-                        if (phraseArray[index] == Character.toUpperCase(guess))
+                        if (Character.toUpperCase(phraseArray[index]) == Character.toUpperCase(guess))
                             phraseArrayHidden[index] = phraseArray[index];
                     }
                     return phraseArrayHidden;
@@ -523,19 +549,15 @@ public class WheelOfFortune
                 
     public static boolean isPhraseSolved (char[] phraseArray, char[] phraseArrayHidden)
         {
-            boolean playerWin = false;
-            for (int index = 0; index <phraseArrayHidden.length; index++)
-            {
-                if (Character.toUpperCase(phraseArrayHidden[index]) == (phraseArray[index]))
-                {
-                    playerWin = true;
-                }
-                else 
-                {
-                    playerWin = false;
-                    break;
-                }
-            }
+            boolean playerWin;
+            String pa;
+            String pah;
+            pa = Arrays.toString(phraseArray);
+            pah = Arrays.toString(phraseArrayHidden);
+            System.out.println(pa.toUpperCase());
+            System.out.println(pah.toUpperCase());
+            playerWin = pa.toUpperCase().equals(pah.toUpperCase());
+            
             return playerWin;
         }
 }
