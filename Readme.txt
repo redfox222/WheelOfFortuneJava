@@ -1,4 +1,4 @@
-
+﻿
 *********************************      Git Information      *****************************************
 you can click the clone or download button on the right and click open in desktop to add the file to your desktop.
 
@@ -63,3 +63,15 @@ Contains 12 slots
 Each remain 10 slots will start with a base of 500 and will add a random value of 50, 100, 200, or 400
 Min value is 550 and Max value is 900
 Spin the Wheel will randomly select one of these 12 slots
+
+
+Sites Stephen used(for future reference):
+
+http://stackoverflow.com/questions/10053078/arraylist-how-to-modify-a-member-of-an-object
+
+http://stackoverflow.com/questions/9558397/set-value-in-arraylistobject
+
+http://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html#set%28int,%20E%29
+
+http://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
+
