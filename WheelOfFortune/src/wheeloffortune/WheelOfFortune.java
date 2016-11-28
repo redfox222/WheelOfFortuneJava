@@ -211,6 +211,8 @@ public class WheelOfFortune
         }
         
         p1.isTurn(true);
+        String hide;
+        newPuzz();
         //display Each Player's Balance
         while(u < playerAmount)
         {
@@ -219,7 +221,8 @@ public class WheelOfFortune
                 System.out.println(players.get(u).getName() + "'s Balance:" + players.get(u).getRBal());
                 System.out.println("Its player "+(u+1)+"'s turn");
                 System.out.println(genre);
-                System.out.println(Arrays.toString(hidden));
+                hide = Arrays.toString(hidden);
+                System.out.println(hide);
                 takeTurn();
             }
         
